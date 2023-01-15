@@ -143,7 +143,7 @@ void JobTracker::ReduceTaskDispatcher() {
     while (remainThreads > 0) {
         MPI_Recv(&retTask, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
         if (retTask != -1)
-            logger->Complete_ReduceTask(task);
+            logger->Complete_ReduceTask(retTask);
         task = curr++;
         MPI_Send(&task, 1, MPI_INT, status.MPI_SOURCE, 0, MPI_COMM_WORLD);
         if (task >= num_reducer)

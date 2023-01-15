@@ -99,7 +99,7 @@ void JobTracker::MapTaskDispatcher() {
         if (task.nodeID == -1)
             remainThreads--;
         else
-            logger->Dispatch_MapTask(task.taskID, task.nodeID);
+            logger->Dispatch_MapTask(task.taskID, retTask.mapperID);
     }
     MPI_Reduce(&tmp, &kv_cnt, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);

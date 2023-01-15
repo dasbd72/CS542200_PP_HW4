@@ -66,12 +66,12 @@ void Logger::Finish_Job() {
     log_file << curr_time - start_job_time << "\n";
 }
 
-void Logger::Dispatch_MapTask(int taskID, int ID) {
+void Logger::Dispatch_MapTask(int taskID, int mapperID) {
     start_map_time[taskID] = MPI_Wtime();
     log_file << GetTime() << ",";
     log_file << "Dispatch_MapTask,";
     log_file << taskID + 1 << ",";
-    log_file << ID << "\n";
+    log_file << mapperID + 1 << "\n";
 }
 
 void Logger::Complete_MapTask(int taskID) {
@@ -96,12 +96,12 @@ void Logger::Finish_Shuffle() {
     log_file << curr_time - start_shuffle_time << "\n";
 }
 
-void Logger::Dispatch_ReduceTask(int taskID, int ID) {
+void Logger::Dispatch_ReduceTask(int taskID, int reducerID) {
     start_reduce_time[taskID] = MPI_Wtime();
     log_file << GetTime() << ",";
     log_file << "Dispatch_ReduceTask,";
     log_file << taskID + 1 << ",";
-    log_file << ID << "\n";
+    log_file << reducerID << "\n";
 }
 
 void Logger::Complete_ReduceTask(int taskID) {

@@ -10,7 +10,7 @@ class Logger {
     void SetMapTask(int num);
     void Start_Job();
     void Finish_Job();
-    void Dispatch_MapTask(int taskID, int ID);
+    void Dispatch_MapTask(int taskID, int mapperID);
     void Complete_MapTask(int taskID);
     void Start_Shuffle(int n);
     void Finish_Shuffle();

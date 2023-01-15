@@ -112,7 +112,7 @@ void TaskTracker::MapTask() {
     pthread_mutex_init(&partLock, NULL);
     for (int i = 0; i < num_cpu - 1; i++) {
         threads[i].taskTracker = this;
-        threads[i].mapperID = (world_rank - 1) * num_cpu + i;
+        threads[i].mapperID = (world_rank - 1) * (num_cpu - 1) + i;
         // DEBUG_MSG(threads[i].mapperID);
         pthread_create(&threads[i].t, NULL, MapThread, (void*)&threads[i]);
     }

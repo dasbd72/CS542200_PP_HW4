@@ -4,7 +4,7 @@ CC := mpicc -cc=$(CC)
 CXX := mpicxx -cxx=$(CXX)
 CFLAGS = -lm -O3 -fopenmp -pthread -march=native
 CFLAGS += -DDEBUG
-# CFLAGS += -DREMOVE_INTERMEDIATE
+CFLAGS += -DREMOVE_INTERMEDIATE
 # CFLAGS += -fsanitize=address -g
 CFLAGS += -Wall -Wextra
 CXXFLAGS = -std=c++17 $(CFLAGS)

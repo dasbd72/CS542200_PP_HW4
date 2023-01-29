@@ -1,10 +1,10 @@
 .vscode
 archive
 outputs
-scripts
 source
-temp
 testcases
 
 *.o
 mapreduce
+
+*.tmp

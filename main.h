@@ -50,8 +50,6 @@ typedef std::vector<std::pair<std::string, int>> Pairs;
 typedef std::map<std::string, std::vector<int>, KeyCmp> Groups;
 typedef std::map<std::string, int, KeyCmp> Results;
 
-const std::string temp_dir = "temp";
-
 struct MapTaskData {
     int taskID;
     int nodeID;

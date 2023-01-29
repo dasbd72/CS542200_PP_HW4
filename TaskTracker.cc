@@ -113,7 +113,6 @@ void TaskTracker::MapTask() {
     for (int i = 0; i < num_cpu - 1; i++) {
         threads[i].taskTracker = this;
         threads[i].mapperID = (world_rank - 1) * (num_cpu - 1) + i;
-        // DEBUG_MSG(threads[i].mapperID);
         pthread_create(&threads[i].t, NULL, MapThread, (void*)&threads[i]);
     }
     for (int i = 0; i < num_cpu - 1; i++) {
@@ -123,7 +122,7 @@ void TaskTracker::MapTask() {
     pthread_mutex_destroy(&partLock);
 
     for (int i = 0; i < num_reducer; i++) {
-        std::string filename = temp_dir + "/" + std::to_string(i) + "-" + std::to_string(world_rank) + ".txt";
+        std::string filename = std::to_string(i) + "-" + std::to_string(world_rank) + ".tmp";
         std::ofstream file(filename, std::ios_base::app);
         kv_cnt += partitions[i].size();
         for (auto kv : partitions[i]) {
@@ -137,7 +136,7 @@ void TaskTracker::MapTask() {
 
 Pairs TaskTracker::ReadIntermediate(int task) {
     Pairs pairs;
-    std::string filename = temp_dir + "/" + std::to_string(task) + ".txt";
+    std::string filename = std::to_string(task) + ".tmp";
     std::ifstream file(filename);
     std::string key;
     int val;

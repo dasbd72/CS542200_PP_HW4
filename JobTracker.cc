@@ -111,7 +111,7 @@ void JobTracker::Shuffle() {
     for (int i = 0; i < num_reducer; i++) {
         Pairs pairs;
         for (int r = 1; r < world_size; r++) {
-            std::string filename = temp_dir + "/" + std::to_string(i) + "-" + std::to_string(r) + ".txt";
+            std::string filename = std::to_string(i) + "-" + std::to_string(r) + ".tmp";
             std::ifstream file(filename);
             std::string key;
             int val;
@@ -124,7 +124,7 @@ void JobTracker::Shuffle() {
             std::remove(filename.c_str());
 #endif
         }
-        std::string filename = temp_dir + "/" + std::to_string(i) + ".txt";
+        std::string filename = std::to_string(i) + ".tmp";
         std::ofstream file(filename);
         for (auto kv : pairs) {
             file << kv.first << " " << kv.second << "\n";
